@@ -1,0 +1,28 @@
+
+dist
+.solid
+.output
+.vercel
+.netlify
+netlify
+coverage
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+
+todo.md
+
+# Temp
+gitignore
+
+# System Files
+.DS_Store
+Thumbs.db
+
