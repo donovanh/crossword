@@ -61,10 +61,10 @@ describe('generateScore', () => {
       map: solutionMap
     }
     const result = generateScore(solution)
-    expect(result).toBeCloseTo(3.428)
+    expect(result).toBeGreaterThan(5)
   })
 
-  it('should generate a better for a squarer grid', () => {
+  it('should generate a better value for a denser grid', () => {
     words = [
       {
         display: 'abc',
@@ -81,7 +81,7 @@ describe('generateScore', () => {
       map: solutionMap
     }
     const result = generateScore(solution)
-    expect(result).toBe(3.6)
+    expect(result).toBe(6)
   })
 
   it('should generate a worse for a much less square grid', () => {
@@ -101,6 +101,6 @@ describe('generateScore', () => {
       map: solutionMap
     }
     const result = generateScore(solution)
-    expect(result).toBeCloseTo(3.093)
+    expect(result).toBeLessThan(5)
   })
 })

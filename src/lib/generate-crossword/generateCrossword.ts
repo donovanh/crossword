@@ -1,4 +1,4 @@
-import { Crossword, Words } from './types'
+import { Crossword, Options, Words } from './types'
 import {
   findSolution,
   generateScore,
@@ -9,12 +9,16 @@ import {
 /**
  * generateCrossword
  * @param words { Word[] } An array of Word objects containing display and clue
+ * @param options { Options } Options for the generator
  * @returns The best crossword solution derived from the words
  */
-export const generateCrossword = async (words: Words): Promise<Crossword> =>
+export const generateCrossword = async (
+  words: Words,
+  options: Options = {}
+): Promise<Crossword> =>
   new Promise((resolve, reject) => {
-    // Don't impose sorting internally
-    const sortedWords = words // sortWords(words)
+    const { width, height, keepWordOrder } = options
+    const sortedWords = keepWordOrder ? words : sortWords(words)
 
     const startTime = performance.now()
 

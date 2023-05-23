@@ -81,36 +81,38 @@ describe('sortWords', () => {
   it('should sort a list of words descending', () => {
     const words = [
       {
-        display: 'aaa',
+        display: 'aba',
         clue: ''
       },
       {
-        display: 'aaaa',
+        display: 'aabb',
         clue: ''
       },
       {
-        display: 'aa',
+        display: 'ab',
         clue: ''
       },
       {
-        display: 'aaa',
+        display: 'acc',
         clue: ''
       },
       {
-        display: 'a',
+        display: 'cc',
         clue: ''
       },
       {
-        display: 'aaaaa',
+        display: 'accaccaca',
         clue: ''
       }
     ]
     const result = sortWords(words)
-    expect(result[0].display).toEqual('aaaaa')
-    expect(result[1].display).toEqual('aaaa')
-    expect(result[2].display).toEqual('aaa')
-    expect(result[3].display).toEqual('aaa')
-    expect(result[4].display).toEqual('aa')
-    expect(result[5].display).toEqual('a')
+    expect(result).toEqual([
+      { display: 'ab', clue: '' },
+      { display: 'cc', clue: '' },
+      { display: 'aba', clue: '' },
+      { display: 'acc', clue: '' },
+      { display: 'aabb', clue: '' },
+      { display: 'accaccaca', clue: '' }
+    ])
   })
 })

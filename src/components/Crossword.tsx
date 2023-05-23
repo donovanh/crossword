@@ -19,39 +19,6 @@ function gridArrayFromCrossword(crossword: Crossword) {
   return grid
 }
 
-function sortWordsByLengthAndMatch(words: Words) {
-  words.sort((a, b) => {
-    // Sort by length first
-    if (a.display.length !== b.display.length) {
-      return a.display.length - b.display.length
-    }
-
-    // Sort by number of matching letters
-    const matchCountA = countMatchingLetters(a, words)
-    const matchCountB = countMatchingLetters(b, words)
-
-    return matchCountB - matchCountA
-  })
-
-  return words
-}
-
-function countMatchingLetters(word: Word, words: Words) {
-  let count = 0
-
-  for (const otherWord of words) {
-    if (otherWord !== word) {
-      for (const letter of word.display) {
-        if (otherWord.display.includes(letter)) {
-          count++
-        }
-      }
-    }
-  }
-
-  return count
-}
-
 export default function Crossword({ words }: CrosswordProps) {
   const [crossword, setCrossword] = createSignal<Crossword>()
   const [grid, setGrid] = createSignal<any[][]>()
@@ -66,9 +33,7 @@ export default function Crossword({ words }: CrosswordProps) {
     async function runGenerateCrossword() {
       try {
         await delay(10)
-        // Sort words first
-        const sortedWords = sortWordsByLengthAndMatch(words)
-        const result = await generateCrossword(sortedWords.reverse())
+        const result = await generateCrossword(words)
 
         if (isMounted) {
           setCrossword(result)

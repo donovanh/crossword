@@ -1,4 +1,4 @@
-import type { SolutionMap, Coord, Solution, Solutions, Word } from '../types'
+import type { SolutionMap, Coord, Word, Words } from '../types'
 import { Direction } from '../types'
 import { canLetterBePlaced } from './letters'
 
@@ -26,4 +26,31 @@ export const canWordBePlaced = (
 }
 
 export const sortWords = (words: Word[]): Word[] =>
-  words.sort((a, b) => b.display.length - a.display.length)
+  words.sort((a, b) => {
+    // Sort by length first
+    if (a.display.length !== b.display.length) {
+      return a.display.length - b.display.length
+    }
+
+    // Sort by number of matching letters
+    const matchCountA = countMatchingLetters(a, words)
+    const matchCountB = countMatchingLetters(b, words)
+
+    return matchCountB - matchCountA
+  })
+
+function countMatchingLetters(word: Word, words: Words) {
+  let count = 0
+
+  for (const otherWord of words) {
+    if (otherWord !== word) {
+      for (const letter of word.display) {
+        if (otherWord.display.includes(letter)) {
+          count++
+        }
+      }
+    }
+  }
+
+  return count
+}

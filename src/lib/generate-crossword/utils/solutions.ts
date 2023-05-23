@@ -2,10 +2,11 @@ import type { Word, Words, Solution, Solutions, Node } from '../types'
 import { Direction } from '../types'
 import {
   addWordToMap,
+  buildTree,
   convertSolutionMapToLetterMap,
   canWordBePlaced,
   createNode,
-  buildTree,
+  generateScore,
   findBestBranch
 } from './'
 
@@ -156,7 +157,7 @@ export const findBestChoiceOfSolutions = (
     newSolutions.map((solution) => createNode(solution))
   )
   // Basic for now but adjust depth based on number of words
-  const depth = words.length > 40 ? 4 : 6
+  const depth = words.length > 40 ? 4 : 10
   const tree = buildTree(startingNode, words, wordIndex, depth)
   return findBestBranch(tree)
 }

@@ -62,7 +62,7 @@ describe('generateCrossword', () => {
         clue: ''
       }
     ]
-    const crossword = await generateCrossword(words)
+    const crossword = await generateCrossword(words, { keepWordOrder: true })
     expect(crossword.words.length).toBe(5)
   })
 

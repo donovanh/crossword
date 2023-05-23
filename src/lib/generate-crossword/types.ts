@@ -38,6 +38,12 @@ export interface Solution {
 export type Solutions = Solution[]
 export type Words = Word[]
 
+export interface Options {
+  width?: number
+  height?: number
+  keepWordOrder?: boolean
+}
+
 export interface CrosswordWord {
   x: number
   y: number
