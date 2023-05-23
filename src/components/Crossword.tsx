@@ -1,6 +1,6 @@
 import { For, Show, createSignal, createEffect, onCleanup } from 'solid-js'
 import { generateCrossword } from '~/lib/generate-crossword'
-import type { Crossword, Word, Words } from '~/lib/generate-crossword'
+import type { Crossword, Words } from '~/lib/generate-crossword'
 
 interface CrosswordProps {
   words: Words

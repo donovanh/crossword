@@ -1,4 +1,4 @@
-import { Direction, PlacedWord, Solution, SolutionMap, Word } from '../types'
+import { PlacedWord, Solution, SolutionMap, Word } from '../types'
 import {
   createNewSolutions,
   createStartingSolution,

@@ -1,7 +1,6 @@
 import type { Solution, Words, Node } from '../types'
 import {
   createNewSolutions,
-  generateScore,
   getBestScoreForSolutions,
   getSolutionsForBranch
 } from './'
